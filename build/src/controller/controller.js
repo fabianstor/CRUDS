@@ -73,7 +73,7 @@ exports.addEnterprise = addEnterprise;
 const showPerson = (_Request, Response) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const persons = yield service.selectPerson();
-        Response.send({ respuesta: "Personas obtenidas con exito", personsas: persons }).status(200);
+        Response.send({ respuesta: "Personas obtenidas con exito", personas: persons }).status(200);
     }
     catch (error) {
         console.log("Error en showPerson", error);
@@ -105,8 +105,8 @@ const showEnterprise = (_Request, Response) => __awaiter(void 0, void 0, void 0,
 exports.showEnterprise = showEnterprise;
 const deletePerson = (Request, Response) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { id } = Request.body;
-        yield service.deletePerson(id);
+        const id = Request.params.id;
+        yield service.deletePerson(+id);
         Response.send({ respuesta: "Persona eliminada con exito" }).status(200);
     }
     catch (error) {
@@ -116,8 +116,9 @@ const deletePerson = (Request, Response) => __awaiter(void 0, void 0, void 0, fu
 exports.deletePerson = deletePerson;
 const deleteProduct = (Request, Response) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { id } = Request.body;
-        yield service.deleteProduct(id);
+        const id = Request.params.id;
+        console.log(Request.body);
+        yield service.deleteProduct(+id);
         Response.send({ respuesta: "Producto eliminado con exito" }).status(200);
     }
     catch (error) {
@@ -127,8 +128,8 @@ const deleteProduct = (Request, Response) => __awaiter(void 0, void 0, void 0, f
 exports.deleteProduct = deleteProduct;
 const deleteEnterprise = (Request, Response) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { id } = Request.body;
-        yield service.deleteEnterprise(id);
+        const id = Request.params.id;
+        yield service.deleteEnterprise(+id);
         Response.send({ respuesta: "Empresa eliminada con exito" }).status(200);
     }
     catch (error) {

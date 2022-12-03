@@ -4,7 +4,7 @@ export const insertPerson = async (nombre: string, edad: number) => {
     await Client.query(`insert into personas (nombre, edad) values ('${nombre}', ${edad})`)
 }
 
-export const insertProduct = async (descripcion: string, categoria: number) => {
+export const insertProduct = async (descripcion: string, categoria: string) => {
     await Client.query(`insert into productos (descripcion, categoria) values ('${descripcion}', '${categoria}')`)
 }
 
