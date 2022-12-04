@@ -14,8 +14,8 @@ path.put('/personas', controller.updatePerson)
 path.put('/productos', controller.updateProduct)
 path.put('/empresas', controller.updateEnterprise)
 
-path.delete('/personas', controller.deletePerson)
-path.delete('/productos', controller.deleteProduct)
-path.delete('/empresas', controller.deleteEnterprise)
+path.delete('/personas/:id', controller.deletePerson)
+path.delete('/productos/:id', controller.deleteProduct)
+path.delete('/empresas/:id', controller.deleteEnterprise)
 
 export default path

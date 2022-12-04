@@ -37,7 +37,7 @@ export const addEnterprise = async (Request: Request, Response: Response) => {
 export const showPerson =async (_Request: Request, Response: Response) => {
     try {
         const persons = await service.selectPerson()
-        Response.send({respuesta: "Personas obtenidas con exito", personsas: persons}).status(200)
+        Response.send({respuesta: "Personas obtenidas con exito", personas: persons}).status(200)
     } catch (error) {
         console.log("Error en showPerson", error)
         Response.send({respuesta: "Error al mostrar personas"}).status(400)
@@ -66,8 +66,8 @@ export const showEnterprise =async (_Request: Request, Response: Response) => {
 
 export const deletePerson =async (Request: Request, Response: Response) => {
     try {
-        const { id } = Request.body
-        await service.deletePerson(id)
+        const id  = Request.params.id
+        await service.deletePerson(+id)
         Response.send({respuesta: "Persona eliminada con exito"}).status(200)
     } catch (error) {
         console.log("Error deletePerson", error)
@@ -75,8 +75,9 @@ export const deletePerson =async (Request: Request, Response: Response) => {
 }
 export const deleteProduct =async (Request: Request, Response: Response) => {
     try {
-        const { id } = Request.body
-        await service.deleteProduct(id)
+        const  id  = Request.params.id
+        console.log(Request.body)
+        await service.deleteProduct(+id)
         Response.send({respuesta: "Producto eliminado con exito"}).status(200)
     } catch (error) {
         console.log("Error deleteProduct", error)
@@ -85,8 +86,8 @@ export const deleteProduct =async (Request: Request, Response: Response) => {
 
 export const deleteEnterprise =async (Request: Request, Response: Response) => {
     try {
-        const { id } = Request.body
-        await service.deleteEnterprise(id)
+        const  id  = Request.params.id
+        await service.deleteEnterprise(+id)
         Response.send({respuesta: "Empresa eliminada con exito"}).status(200)
     } catch (error) {
         console.log("Error deleteEnterprise", error)
